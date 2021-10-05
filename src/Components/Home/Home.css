@@ -1,0 +1,90 @@
+body {
+    margin: 0;
+    background: url(../../Assets/navback.png) repeat;
+  }
+
+#CardTable {
+    height: 400px;
+    overflow: hidden;
+    background-color: #562c00;
+    color: white;
+    text-align: left;
+    transition: 0.10s;
+}
+
+#CardTable:hover {
+    color: black;
+    cursor: pointer;
+    overflow: auto;
+    transform: scale(1.08);
+    transition: transform .3s;
+
+    /* Apply zoom animation */
+    background: #6C756B;
+    border: 2px solid #96C5F7;
+
+    -webkit-animation: smoothCriminal 15s ease infinite;
+    -moz-animation: smoothCriminal 15s ease infinite;
+    animation: smoothCriminal 15s ease infinite;
+    font-weight: bold;
+}
+
+#logo {
+    height: 7vh;
+    display:block;
+    margin-right:auto;
+    /* margin-left:auto; */
+    /* margin-top: 8vh;
+    width: 100vh; */
+}
+
+#appBar {
+    background: rgb(255, 255, 255);
+    margin: auto;
+}
+
+#openBtn{
+    color: white;
+}
+
+
+#ishButton {
+    margin: 0 10px;
+	background-color: #93ACB5;
+	border-radius: 25px;
+	border: 2px solid #6C756B;
+	display: inline-block;
+	cursor: pointer;
+	font-family: 'Harlow';
+	font-size: 12px;
+	font-weight: lighter;
+	padding: 10px 10px;
+}
+#ishButton:hover {
+
+    transform: scale(1.08);
+    transition: transform .3s;
+
+    /* Apply zoom animation */
+    background: #A9D3FF;
+    border: 2px solid #96C5F7;
+
+    -webkit-animation: smoothCriminal 15s ease infinite;
+    -moz-animation: smoothCriminal 15s ease infinite;
+    animation: smoothCriminal 15s ease infinite;
+    font-weight: bold;
+}
+#ishButton:active {
+	position: relative;
+	top: 1px;
+}
+
+
+.root {
+    justify-content: right;
+}
+
+.logo {
+    justify-content: left;
+}
+

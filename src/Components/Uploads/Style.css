@@ -1,0 +1,27 @@
+#CreateBtn {
+    display:block;
+    margin-right:auto;
+    margin-left:auto;
+    font-family: 'Butcherman', cursive;
+    border-Radius: 5;
+    border: 1px solid white;
+    color: white;
+    padding: 0 20px;
+}
+
+#displaycontent {
+    display: flex;
+    justify-content: center;
+}
+
+#openBtn{
+    color: white;
+}
+
+#editBtn {
+    color: white;
+}
+
+#deleteBtn {
+    color: white;
+}
