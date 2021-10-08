@@ -8,7 +8,8 @@ import {
     Dialog,
     DialogContent,
    DialogActions,
-    Typography,
+    DialogTitle,
+    Grid,
 } from '@material-ui/core';
 import './notesStyle.css';
 import '../Home/Home.css'
@@ -16,7 +17,7 @@ import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import APIURL from '../../helpers/environment';
 
 interface Props {
-    token: string,
+    token: string
     bookId: number
 }
 
@@ -51,7 +52,7 @@ export default class NotesCreate extends React.Component<Props, State> {
             }),
             headers: new Headers({
                 'Content-Type': 'application/json',
-                'Authorization': this.props.token
+                'Authorization':  `${this.props.token}`
             })
         })
         .then(res => res.json())
@@ -99,55 +100,60 @@ export default class NotesCreate extends React.Component<Props, State> {
 
     render() {
         return (
-            <div className="main">
-                    <Button onClick={this.handleOpen} id="ishButton" variant="outlined">Notes</Button>
+            <div>
+        
+                    <Grid container justifyContent="center" >
+                        <Button onClick={this.handleOpen} id="ishButton" variant="outlined">Add Note</Button>
+                    </Grid>
+                   
                 <Dialog open={this.state.handleopen} onClose={this.handleClose}>
                     <DialogContent id="notes">
-                        <Typography variant="h6" id="dialogTitle"><strong>Notes</strong></Typography>
-                        <FormGroup>
-                            <InputLabel htmlFor="date" id="dateLabel">Date</InputLabel>
+                        <DialogTitle id="dialogTitle"><strong>Notes</strong></DialogTitle>
+                        
                             <TextField
+                                autoFocus
+                                margin="dense"
                                 label="Date"
-                                id="dateInput"
-                                type="date"
-                                variant="outlined"
-                                defaultValue="01/13/2021"
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
+                                name="date"
+                                type="text"
+                                fullWidth
                                 onChange={(e) => this.setDate(e.target.value)}
-                            >Date</TextField>
-                        </FormGroup>
-                        <FormGroup>
-                            <InputLabel htmlFor="title" id="titleLabel">Title</InputLabel>
+                                />
+                        
                             <TextField
+                                autoFocus
+                                margin="dense"
                                 label="Title"
-                                name={this.state.title}
-                                variant="outlined"
-                                id="titleInput"
-                                onChange={(e) => this.setTitle(e.target.value)}
-                            />
-                        </FormGroup>
-                        <FormGroup>
-                            <InputLabel htmlFor="entry" id="entryLabel">Entry</InputLabel>
+                                name="title"
+                                type="text"
+                                fullWidth
+                                onChange={(e) => this.setTitle(e.target.value)}>
+                            </TextField>
+                       
+                           
                             <TextField
+                                autoFocus
+                                margin="dense"
                                 label="Entry"
-                                name={this.state.entry}
-                                multiline rowsMax={6}
+                                name="entry"
+                                type="text"
                                 variant="outlined"
-                                id="entryInput"
+                                fullWidth
                                 onChange={(e) => this.setEntry(e.target.value)}
                             />
-                        </FormGroup>
+                       
+                        
                     </DialogContent>
-                    <DialogActions id="notesBtn">
+                    <DialogActions id="btns">
                         <Box justifyContent="center">
-                            <Button onClick={this.handleOpen} className="createNotes">
+                            <Button onClick={this.handleClose} className="createBookBtn">
                                 <SkipPreviousIcon id="backIcon" />{" "}{" "}Back</Button>
-                            <Button type="submit" className="createNotesbtn" id="submitButton"onClick={this.handleSubmit} ><strong>Add Note</strong></Button>
+                            <Button type="submit" className="createBook" id="ishButton"onClick={this.handleSubmit} ><strong>Submit</strong></Button>
                         </Box>
                     </DialogActions>
                 </Dialog>
+           
+            
             </div >
         )
     }

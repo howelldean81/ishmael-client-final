@@ -14,7 +14,7 @@ import APIURL from '../../helpers/environment';
 type Props = {
     fetchBooks: () => void,
     updateOff: () => void,
-    token: string,
+    token: string
     bookUpdate: any,
 }
 
@@ -46,7 +46,7 @@ export default class BookEdit extends React.Component<Props, State> {
             method: 'POST',
             headers: new Headers({
                 'Content-Type': 'application/json',
-                'Authorization': this.props.token
+                'Authorization': `${this.props.token}`
             }),
             body: JSON.stringify({title: this.state.title, author: this.state.author, published: this.state.published, file: this.state.file})
         }) .then(() => {

@@ -1,8 +1,9 @@
 import React from 'react';
-import { Card, CardContent, Typography } from '@material-ui/core';
+import { Card, CardContent, Grid } from '@material-ui/core';
 import ClearIcon from '@material-ui/icons/Clear';
 import CreateIcon from '@material-ui/icons/Create';
 import IconButton from '@material-ui/core/IconButton/IconButton';
+import '../Uploads/Style.css';
 import APIURL from '../../helpers/environment';
 
 type Props = {
@@ -29,7 +30,7 @@ export default class notesTable extends React.Component<Props> {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',
-                'Authorization': this.props.token
+                'Authorization':  `${this.props.token}`
             })
         }).then(() => this.props.fetchNotes())
     };
@@ -37,32 +38,23 @@ export default class notesTable extends React.Component<Props> {
         render () {
             return (
                 <div>
-                {this.props.myNotes
-                ? this.props.myNotes.map((myNotes) => (
-                    <Card key={myNotes.id}>
-                        <CardContent>
-                        <Typography gutterBottom variant="h5" component="h4">
-                            Date
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" >
-                          {myNotes.date}
-                        </Typography>
-                        <Typography gutterBottom variant="h5" component="h4">
-                            Title
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary">{myNotes.title}</Typography>
-                        <Typography gutterBottom variant="h5" component="h4">
-                            Entry
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary">{myNotes.entry}</Typography>
-                        <CardContent>
-                            <IconButton onClick={() => { this.props.editUpdateNotes(myNotes); this.props.updateOn() }}><CreateIcon /></IconButton>
-                            <IconButton className="delete-btn" onClick={() => { this.noteDelete(myNotes)}} ><ClearIcon /></IconButton>
-                        </CardContent>
-                        </CardContent>
-                    </Card>
-                ))
-                : undefined} 
+                    <Grid container spacing={10} style={{padding: 24}}>
+                        {this.props.myNotes
+                        ? this.props.myNotes.map((myNotes) => (
+                            <Grid item xs={12} sm={6} lg={4} xl={4}>
+                                <Card key={myNotes.id} id="CardTable">
+                                    <CardContent>Date:{myNotes.date}</CardContent>
+                                    <CardContent>Title:{myNotes.title}</CardContent>
+                                    <CardContent>Entry:{myNotes.entry}</CardContent>
+                                    <CardContent>
+                                        <IconButton id="editBtn" onClick={() => { this.props.editUpdateNotes(myNotes); this.props.updateOn() }}><CreateIcon /></IconButton>
+                                        <IconButton id="deleteBtn" onClick={() => { this.noteDelete(myNotes)}} ><ClearIcon /></IconButton>
+                                   </CardContent>
+                                </Card>
+                            </Grid>
+                        ))
+                        : undefined}
+                    </Grid> 
                 </div>  
             )
         }

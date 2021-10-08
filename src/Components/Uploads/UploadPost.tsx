@@ -1,23 +1,23 @@
 import React from 'react';
 import {
     Button,
-    FormGroup,
-    InputLabel,
+   DialogTitle,
     Box,
     TextField,
     Dialog,
     DialogContent,
     DialogActions,
-    Typography,
+    
     Grid,
-    AppBar,
+   
 } from '@material-ui/core';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import './Style.css';
 import APIURL from '../../helpers/environment';
 
+
 interface Props {
-    token: string,
+    token: string
     fetchBooks: () => void,
     BookCreate: any,
     createOff: () => void,
@@ -55,7 +55,7 @@ export default class BookCreate extends React.Component<Props, State> {
             body: bookData, 
             headers: new Headers({
                 // 'Content-Type': 'application/json',
-                'Authorization': this.props.token
+                'Authorization': `${localStorage.getItem("token")}`
             })
         })
             .then(res => res.json())
@@ -109,50 +109,49 @@ export default class BookCreate extends React.Component<Props, State> {
     
     render() {
         return (
-            <div className="main">
-                <Grid container spacing={2} style={{padding: 2}}>
-                    <Grid item xs={12} sm={6} lg={4} xl={12}>
-                        <Button onClick={this.handleOpen} id="ishButton" variant="outlined">Upload</Button>
-                    </Grid>
+            <div>
+                <Grid container justifyContent="center" style={{padding: 150}}>
+                    <Button onClick={this.handleOpen} id="uploadBtn" variant="outlined">Upload</Button>
                 </Grid>
                 <Dialog open={this.state.handleopen} onClose={this.handleClose}>
                     <DialogContent id="uploads">
-                        <Typography variant="h6" id="dialogTitle"><strong>Book Details</strong></Typography>
-                        <FormGroup>
-                            <InputLabel htmlFor="Title" id="titleLabel">Title</InputLabel>
+                        <DialogTitle id="dialogTitle"><strong>Book Details</strong></DialogTitle>
+                        
                             <TextField
-                                id="titleInput"
+                                autoFocus
+                                margin="dense"
                                 name="title"
-                                value={this.state.title}
-                                variant="outlined"
+                                label="Title"
+                                fullWidth
                                 onChange={(e) => this.setTitle(e.target.value)}
-                            />
-                        </FormGroup>
-                        <FormGroup>
-                            <InputLabel htmlFor="author" id="authorLabel">Author</InputLabel>
+                                />
+                       
                             <TextField
-                                id="authorInput"
+                                autoFocus
+                                margin="dense"
                                 name="author"
-                                value={this.state.author}
-                                onChange={(e) => this.setAuthor(e.target.value)}
-                            >Date</TextField>
-                        </FormGroup>
-                        <FormGroup>
-                            <InputLabel htmlFor="published" id="publishedLabel">Published</InputLabel>
+                                label="Author"
+                                fullWidth
+                                onChange={(e) => this.setAuthor(e.target.value)}>
+                            </TextField>
+                       
+                         
                             <TextField
-                                value={this.state.published}
+                                autoFocus
+                                margin="dense"
                                 name="published"
-                                id="publishedInput"
+                                label="Published Date"
+                                fullWidth
                                 onChange={(e) => this.setPublished(e.target.value)}
                             />
-                        </FormGroup>
+                        
                         <input
                             accept="books/*"
                             className="inputBook"
                             id="contained-button-file"
                             type="file"
                             onChange={this.singleFileChangedHandler}
-                        />
+                            />
                     </DialogContent>
                     <DialogActions id="btns">
                         <Box justifyContent="center">
@@ -162,7 +161,8 @@ export default class BookCreate extends React.Component<Props, State> {
                         </Box>
                     </DialogActions>
                 </Dialog>
-            </div >
+            
+        </div>
             
         )
     }

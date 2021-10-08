@@ -8,7 +8,7 @@ import APIURL from '../../helpers/environment';
 
 
 type Props = {
-    token: string;
+    token: string,
 }
 
 type State = {
@@ -31,7 +31,6 @@ export default class BookIndex extends React.Component<Props, State> {
             updateActive: false,
             BookCreateActive: false,
             handleOpen: false,
-           
         }
     }
 
@@ -104,7 +103,6 @@ export default class BookIndex extends React.Component<Props, State> {
             handleOpen: false
         })
     }
-
 
     render() {
         return (

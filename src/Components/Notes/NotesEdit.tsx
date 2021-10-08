@@ -8,7 +8,6 @@ import {
     TextField,
     Box,
 } from '@material-ui/core';
-import Rating from '@material-ui/lab/Rating';
 import ClearIcon from '@material-ui/icons/Clear';
 import IconButton from '@material-ui/core/IconButton/IconButton';
 import APIURL from '../../helpers/environment';
@@ -40,14 +39,14 @@ export default class NotesEdit extends React.Component<Props, State> {
         }
     }
 
-    handleUpdate = (event: any) => {
+    handleUpdate = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.preventDefault();
         fetch(`${APIURL}/notes/${this.props.notesUpdate.id}`, {
             method: 'PUT',
             body: JSON.stringify({ date: this.state.date, title: this.state.title, entry: this.state.entry, }),
             headers: new Headers({
                 'Content-Type': 'application/json',
-                'Authorization': this.props.token
+                'Authorization': `${this.props.token}`
             })
         })
             .then(() => {

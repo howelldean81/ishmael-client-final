@@ -1,12 +1,37 @@
-#CreateBtn {
-    display:block;
-    margin-right:auto;
-    margin-left:auto;
-    font-family: 'Butcherman', cursive;
-    border-Radius: 5;
-    border: 1px solid white;
-    color: white;
-    padding: 0 20px;
+
+
+#uploadBtn {
+    display: block;
+    margin-right: 50px;
+    margin-left: 50px;
+    margin-bottom: auto;
+    background-color: #93ACB5;
+    border-radius: 25px;
+	border: 2px solid #6C756B;
+    cursor: pointer;
+	font-family: 'Harlow';
+	font-size: 12px;
+	font-weight: lighter;
+    padding: 20px;
+} 
+
+#uploadBtn:hover {
+
+    transform: scale(1.08);
+    transition: transform .3s; 
+
+    /* Apply zoom animation */
+    background: #A9D3FF;
+    border: 2px solid #96C5F7;
+
+    -webkit-animation: smoothCriminal 15s ease infinite;
+    -moz-animation: smoothCriminal 15s ease infinite;
+    animation: smoothCriminal 15s ease infinite;
+    font-weight: bold;
+}
+#uploadBtn:active {
+	position: relative;
+	top: 1px;
 }
 
 #displaycontent {
@@ -24,4 +49,8 @@
 
 #deleteBtn {
     color: white;
+}
+
+#cardControls {
+    justify-content: center;
 }

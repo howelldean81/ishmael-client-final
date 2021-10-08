@@ -1,26 +1,27 @@
 body {
     margin: 0;
-    background: url(../../Assets/navback.png) repeat;
+    /* background: url(../../Assets/navback.png) repeat; */
+    background-color: lightgray;
   }
 
 #CardTable {
-    height: 400px;
-    overflow: hidden;
-    background-color: #562c00;
+    height: auto;
+    background-color: #696666;
     color: white;
     text-align: left;
     transition: 0.10s;
+    justify-items: center;
 }
 
 #CardTable:hover {
     color: black;
     cursor: pointer;
-    overflow: auto;
     transform: scale(1.08);
     transition: transform .3s;
+    
 
     /* Apply zoom animation */
-    background: #6C756B;
+    background: #938A94;
     border: 2px solid #96C5F7;
 
     -webkit-animation: smoothCriminal 15s ease infinite;
@@ -39,14 +40,13 @@ body {
 }
 
 #appBar {
-    background: rgb(255, 255, 255);
+    background: black;
     margin: auto;
 }
 
 #openBtn{
     color: white;
 }
-
 
 #ishButton {
     margin: 0 10px;
@@ -88,3 +88,6 @@ body {
     justify-content: left;
 }
 
+#ishIcons {
+    color: whitesmoke
+}

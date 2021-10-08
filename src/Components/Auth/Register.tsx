@@ -35,7 +35,7 @@ class Register extends React.Component<Props, RegisterState> {
         }
     }
 
-   handleSubmit = (event: any) => {
+   handleSubmit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
        event.preventDefault();
        if (this.state.password.length < 6) {
            alert('password must be at least 6 characters')

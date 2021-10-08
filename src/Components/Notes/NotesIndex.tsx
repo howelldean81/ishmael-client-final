@@ -1,14 +1,12 @@
 import React from 'react';
-import CommentCreate from './NotesCreate';
-import CommentEdit from './NotesEdit';
-import CommentTable from './NotesTable';
+
+import NotesEdit from './NotesEdit';
+import NotesTable from './NotesTable';
 import Grid from '@material-ui/core/Grid';
 import APIURL from '../../helpers/environment';
 
 type Props = {
     token: string;
-    // updateToken: (newToken: string) => void,
-    // clearToken: () => void,
 }
 
 type State = {
@@ -80,14 +78,8 @@ export default class NotesIndex extends React.Component<Props, State> {
             <div className="Container">
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
-                            {/* <CommentCreate
-                                fetchComments={this.fetchComments.bind(this)}
-                                token={this.props.token}
-                                // updateToken={this.props.updateToken}
-                                // clearToken={this.props.clearToken}
-                            
-                            /> : <> </> */}
-                            <CommentTable
+                           
+                            <NotesTable
                                 myNotes={this.state.myNotes}
                                 editUpdateNotes={this.editUpdateNotes.bind(this)}
                                 updateOn={this.updateOn.bind(this)}
@@ -95,7 +87,7 @@ export default class NotesIndex extends React.Component<Props, State> {
                                 token={this.props.token}
                         />
                         {this.state.updateActive ?
-                            <CommentEdit
+                            <NotesEdit
                                 notesUpdate={this.state.notesUpdate}
                                 updateOff={this.updateOff.bind(this)}
                                 token={this.props.token}
